@@ -1,5 +1,6 @@
 const RenameMaterialIcon = require('../src/index.js'); // this plugin
 const config = require('./config');
+const path = require('path');
 
 module.exports = {
     mode: 'development',

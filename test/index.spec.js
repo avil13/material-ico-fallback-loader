@@ -11,10 +11,10 @@ const html_src = `
 `;
 
 describe('Loader replace functions', () => {
-    let html = '';
     const context_default = {
         callback(err, source) {}
     }
+    let html = '';
     let context;
 
     beforeEach(() => {
@@ -35,18 +35,3 @@ describe('Loader replace functions', () => {
         loader.call(context, html);
     });
 });
-
-
-
-
-
-    // const config = {
-    //     module: {
-    //         rules: [
-    //             {
-    //                 test: /\.html$/,
-    //                 loader: loader
-    //             }
-    //         ]
-    //     }
-    // };
