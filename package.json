@@ -8,8 +8,12 @@
         "test": "jest"
     },
     "keywords": [],
-    "author": "",
+    "author": "avil13",
     "license": "ISC",
+    "git": {
+        "type": "git",
+        "url": "https://github.com/avil13/material-ico-fallback-loader.git"
+    },
     "dependencies": {},
     "devDependencies": {
         "@webpack-contrib/test-utils": "^0.1.2",
