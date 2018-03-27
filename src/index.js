@@ -1,31 +1,25 @@
-const glob = require('glob');
+const grid_icon = require('./grid');
+const icons = {};
 
-const _options = {
-  path: '**/*.html'
+for (let i=0; i < grid_icon.icons.length; i++) {
+    const v = grid_icon.icons[i];
+    icons[v.ligature] = '&#x' + v.codepoint;
+}
+
+module.exports = function(content, map, meta) {
+    this.callback(null, replaceIco(content), map, meta);
+    return; // always return undefined when calling callback()
 };
 
-const RenameMaterialIcon = function(options) {
-    this.options = Object.assign({}, options, _options);
-};
 
-
-RenameMaterialIcon.prototype.apply = function(compiler) {
-    compiler.plugin("compile", function(params) {
-        console.log("The compiler is starting to compile...");
-    });
-
-    compiler.plugin("compilation", function(compilation) {
-        console.log("The compiler is starting a new compilation...");
-
-        compilation.plugin("optimize", function() {
-            console.log("The compilation is starting to optimize files...");
-        });
-    });
-
-    compiler.plugin("emit", function(compilation, callback) {
-        console.log("The compilation is going to emit files...");
-        callback();
-    });
-};
-
-module.exports = RenameMaterialIcon;
+function replaceIco(content) {
+    if (/class="material-icons"/.test(content)) {
+        content = content.replace(/(material-icons[^>]*>)([^<]+)/g, ($0, $1, $2) => {
+            if (icons[$2]) {
+                return $1 + icons[$2];
+            }
+            return $0;
+        })
+    }
+    return content;
+}
