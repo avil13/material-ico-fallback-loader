@@ -17,6 +17,10 @@ function replaceIco(content) {
         content = content.replace(/(material-icons[^>]*>)([^<]+)/g, ($0, $1, $2) => {
             if (icons[$2]) {
                 return $1 + icons[$2];
+            } else if (/(')([^']+)(')/g.test($2)) {
+                return $1 + $2.replace(/(')([^']+)(')/g, ($0, $1, $2, $3) => {
+                    return $1 + (icons[$2] || $2) + $3;
+                });
             }
             return $0;
         })
