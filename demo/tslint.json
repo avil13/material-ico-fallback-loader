@@ -1,14 +1,21 @@
 {
   "defaultSeverity": "warning",
-  "extends": [
-    "tslint:recommended"
-  ],
   "linterOptions": {
-    "exclude": [
-      "node_modules/**"
-    ]
+    "exclude": ["node_modules/**", "**/*.js", "dist/**", ".nuxt/**", ".vscode/**", "assets/**", "**/*.spec.ts"]
   },
+
+  "extends": [
+    "tslint:latest",
+    "@kurosame/tslint-config-vue",
+    "tslint-config-prettier"
+  ],
+
   "rules": {
+    "prettier": [true, ".prettierrc"],
+    "variable-name": [true, "allow-snake-case"],
+    "no-var-requires": false,
+    "member-access": false,
+    "trailing-comma": false,
     "quotemark": [true, "single"],
     "indent": [true, "spaces", 2],
     "interface-name": false,
