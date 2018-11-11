@@ -2,3 +2,4 @@ example/
 .vscode/
 node_modules/
 test/
+demo/
