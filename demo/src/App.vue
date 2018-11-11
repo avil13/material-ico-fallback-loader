@@ -38,12 +38,6 @@ import { Icon } from './icon-interface';
 export default class App extends Vue {
   filter: string = '';
   icon: Icon | null = null;
-
-  mounted() {
-    this.$on('input', ev => {
-      debugger;
-    });
-  }
 }
 </script>
 
